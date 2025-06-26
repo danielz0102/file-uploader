@@ -7,6 +7,10 @@ import { sessionStore } from '#db'
 import { PORT, COOKIE_SECRET, NODE_ENV } from '#config/config.js'
 
 import { rootRouter } from '#routers/rootRouter.js'
+import { usersRouter } from '#routers/usersRouter.js'
+
+import { handle404 } from '#middlewares/handle404.js'
+import { handleError } from '#middlewares/handleError.js'
 
 const app = express()
 
@@ -14,6 +18,7 @@ app.set('view engine', 'ejs')
 app.set('views', './views')
 app.set('trust proxy', 1)
 
+app.use(express.urlencoded({ extended: true }))
 app.use(
   session({
     secret: COOKIE_SECRET,
@@ -29,6 +34,9 @@ app.use(
 app.use(passport.session())
 
 app.use('/', rootRouter)
+app.use('/', usersRouter)
+app.use(handle404)
+app.use(handleError)
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`)
