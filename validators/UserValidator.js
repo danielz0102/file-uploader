@@ -22,6 +22,15 @@ const validateSignUp = [
   },
 ]
 
+function checkAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+
+  return res.status(401).render('login', { errors: ['You must be logged in'] })
+}
+
 export default {
   validateSignUp,
+  checkAuth,
 }
