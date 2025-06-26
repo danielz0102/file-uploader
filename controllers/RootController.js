@@ -1,6 +1,5 @@
 function renderHome(req, res) {
-  const username = req.user ? req.user.username : 'Guest'
-  res.send(`Hello, ${username}`)
+  res.render('home')
 }
 
 function renderLogin(req, res) {
