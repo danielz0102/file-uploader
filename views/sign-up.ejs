@@ -4,41 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
+    <script type="module" src="/scripts/sign-up.js"></script>
   </head>
   <body>
     <%- include('partials/navbar') %>
-    <form action="sign-up" method="post">
-      <div class="form-field">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Enter your username"
-          required
-        />
-      </div>
-      <div class="form-field">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="********"
-          required
-        />
-      </div>
-      <div class="form-field">
-        <label for="confirm-password">Confirm Password</label>
-        <input
-          type="password"
-          id="confirm-password"
-          name="confirm-password"
-          placeholder="********"
-          required
-        />
-      </div>
-      <button>Sign Up</button>
-    </form>
+    <main>
+      <h1>Sign Up</h1>
+      <form action="sign-up" method="post" id="sign-up-form">
+        <div class="form-field">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+        <div class="form-field">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="********"
+            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}"
+            required
+          />
+        </div>
+        <div class="form-field">
+          <label for="confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            placeholder="********"
+            required
+          />
+        </div>
+        <button>Sign Up</button>
+      </form>
+    </main>
   </body>
 </html>

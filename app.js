@@ -21,6 +21,7 @@ app.set('views', './views')
 app.set('trust proxy', 1)
 
 app.use(express.urlencoded({ extended: true }))
+app.use(express.static('public'))
 app.use(
   session({
     secret: COOKIE_SECRET,
