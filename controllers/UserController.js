@@ -39,7 +39,18 @@ async function login(req, res) {
   })(req, res)
 }
 
+function logout(req, res) {
+  req.logout((err) => {
+    if (err) {
+      return res.status(500).json({ error: 'Logout failed' })
+    }
+
+    return res.redirect('/')
+  })
+}
+
 export default {
   signUp,
   login,
+  logout,
 }
