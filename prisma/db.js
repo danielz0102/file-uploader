@@ -1,5 +1,9 @@
 import { PrismaClient } from '@prisma/client/extension'
+import { PrismaSessionStore } from '@quixo3/prisma-session-store'
 
-const prisma = new PrismaClient()
-
-export default prisma
+export const db = new PrismaClient()
+export const sessionStore = new PrismaSessionStore(db, {
+  checkPeriod: 1000 * 60 * 2,
+  dbRecordIdIsSessionId: true,
+  dbRecordIdFunction: undefined,
+})

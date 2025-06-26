@@ -1,10 +1,9 @@
 import express from 'express'
 import session from 'express-session'
 import passport from 'passport'
-import { PrismaSessionStore } from '@quixo3/prisma-session-store'
-import { PrismaClient } from '@prisma/client/extension'
 
 import './config/auth.js'
+import { sessionStore } from '#db'
 import { PORT, COOKIE_SECRET, NODE_ENV } from '#config/config.js'
 
 const app = express()
@@ -22,11 +21,7 @@ app.use(
       secure: NODE_ENV === 'production',
       httpOnly: true,
     },
-    store: new PrismaSessionStore(new PrismaClient(), {
-      checkPeriod: 1000 * 60 * 2,
-      dbRecordIdIsSessionId: true,
-      dbRecordIdFunction: undefined,
-    }),
+    store: sessionStore,
   }),
 )
 app.use(passport.session())
