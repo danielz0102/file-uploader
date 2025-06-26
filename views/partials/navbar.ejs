@@ -1,0 +1,14 @@
+<header>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <% if (!locals.user) { %>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/sign-up">Sign up</a></li>
+      <% } else { %>
+      <li><a href="/files/<%= locals.user.id %>">Files</a></li>
+      <li><a href="/logout">Logout</a></li>
+      <% } %>
+    </ul>
+  </nav>
+</header>

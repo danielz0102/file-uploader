@@ -6,9 +6,10 @@
     <title>Home</title>
   </head>
   <body>
+    <%- include('partials/navbar') %>
     <main>
-      <h1>Welcome <%= locals.user.username %></h1>
-      <a href="/files/<%= locals.user.id %>">See files</a>
+      <h1>Welcome <%= locals.user?.username %></h1>
+      <a href="/files/<%= locals.user?.id %>">See files</a>
     </main>
   </body>
 </html>
