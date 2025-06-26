@@ -7,28 +7,40 @@
   </head>
   <body>
     <%- include('partials/navbar') %>
-    <form action="/login" method="post">
-      <div class="form-field">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Enter your username"
-          required
-        />
-      </div>
-      <div class="form-field">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          required
-        />
-      </div>
-      <button>Login</button>
-    </form>
+    <main>
+      <form action="/login" method="post">
+        <h1>Log in</h1>
+
+        <% if (locals.errors) { %>
+        <ul>
+          <% locals.errors.forEach((error) => { %>
+          <li><%= error %></li>
+          <% }) %>
+        </ul>
+        <% } %>
+
+        <div class="form-field">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+        <div class="form-field">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <button>Login</button>
+      </form>
+    </main>
   </body>
 </html>

@@ -1,7 +1,7 @@
 import UserModel from '#models/UserModel.js'
 import passport from 'passport'
 
-async function signUp(req, res) {
+async function signUp(req, res, next) {
   const { username, password } = req.body
 
   const user = await UserModel.create({ username, password })
@@ -14,40 +14,37 @@ async function signUp(req, res) {
 
   req.login(user, (err) => {
     if (err) {
-      return res.status(500).render('error', {
-        error: 'Login failed',
-        message: 'An error occurred while logging in.',
-      })
+      next(err)
     }
 
     return res.status(201).render('/')
   })
 }
 
-async function login(req, res) {
+async function login(req, res, next) {
   passport.authenticate('local', (err, user, info) => {
     if (err) {
-      return res.status(500).json({ error: 'Authentication failed' })
+      next(err)
     }
 
     if (!user) {
-      return res.status(401).json({ error: info.message })
+      return res.status(401).render('login', { errors: [info.message] })
     }
 
     req.login(user, (err) => {
       if (err) {
-        return res.status(500).json({ error: 'Login failed' })
+        next(err)
       }
 
-      return res.status(200).json({ message: 'Login successful' })
+      return res.status(200).redirect('/')
     })
   })(req, res)
 }
 
-function logout(req, res) {
+function logout(req, res, next) {
   req.logout((err) => {
     if (err) {
-      return res.status(500).json({ error: 'Logout failed' })
+      next(err)
     }
 
     return res.redirect('/')
