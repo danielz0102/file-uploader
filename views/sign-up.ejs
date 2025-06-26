@@ -10,6 +10,15 @@
     <%- include('partials/navbar') %>
     <main>
       <h1>Sign Up</h1>
+
+      <% if (locals.errors) { %>
+      <ul>
+        <% locals.errors.forEach((error) => { %>
+        <li><%= error %></li>
+        <% }) %>
+      </ul>
+      <% } %>
+
       <form action="sign-up" method="post" id="sign-up-form">
         <div class="form-field">
           <label for="username">Username</label>

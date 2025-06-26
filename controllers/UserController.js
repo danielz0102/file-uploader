@@ -7,15 +7,20 @@ async function signUp(req, res) {
   const user = await UserModel.create({ username, password })
 
   if (!user) {
-    return res.status(400).json({ error: 'Username already exists' })
+    return res
+      .status(400)
+      .render('sign-up', { errors: ['The user already exists'] })
   }
 
   req.login(user, (err) => {
     if (err) {
-      return res.status(500).json({ error: 'Login failed' })
+      return res.status(500).render('error', {
+        error: 'Login failed',
+        message: 'An error occurred while logging in.',
+      })
     }
 
-    return res.status(201).json({ message: 'User created successfully', user })
+    return res.status(201).render('/')
   })
 }
 
