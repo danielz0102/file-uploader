@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client/extension'
+import { PrismaClient } from '@prisma/client'
 import { PrismaSessionStore } from '@quixo3/prisma-session-store'
 
 export const db = new PrismaClient()

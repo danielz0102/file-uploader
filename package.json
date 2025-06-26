@@ -12,7 +12,9 @@
   },
   "imports": {
     "#config/*": "./config/*",
-    "#db": "./prisma/db.js"
+    "#db": "./prisma/db.js",
+    "#controllers/*": "./controllers/*",
+    "#routers/*": "./routers/*"
   },
   "keywords": [],
   "author": "",

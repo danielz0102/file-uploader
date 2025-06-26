@@ -6,6 +6,8 @@ import './config/auth.js'
 import { sessionStore } from '#db'
 import { PORT, COOKIE_SECRET, NODE_ENV } from '#config/config.js'
 
+import { rootRouter } from '#routers/rootRouter.js'
+
 const app = express()
 
 app.set('view engine', 'ejs')
@@ -26,9 +28,7 @@ app.use(
 )
 app.use(passport.session())
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!')
-})
+app.use('/', rootRouter)
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`)
