@@ -5,13 +5,10 @@ export function renderFiles(req, res) {
 }
 
 export async function uploadFile(req, res) {
-  if (!req.file) {
-    return res.status(400).send('No file uploaded.')
-  }
-
-  const { filename, size, mimetype } = req.file
+  const { filename, originalname, size, mimetype } = req.file
   const result = await FileModel.create({
     filename,
+    originalName: originalname,
     userId: req.user.id,
     size,
     mimetype,
@@ -21,7 +18,7 @@ export async function uploadFile(req, res) {
     throw new Error('File was not created in the DB', req.file)
   }
 
-  res.status(200).send('File uploaded successfully.')
+  res.redirect('/files')
 }
 
 export default {

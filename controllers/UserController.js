@@ -17,7 +17,7 @@ async function signUp(req, res, next) {
       next(err)
     }
 
-    return res.status(201).render('/')
+    return res.status(201).redirect('/')
   })
 }
 

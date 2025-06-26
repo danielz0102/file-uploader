@@ -1,6 +1,12 @@
 import { db } from '#db'
 
-export async function create({ filename, userId, size, mimetype }) {
+export async function create({
+  filename,
+  originalName,
+  userId,
+  size,
+  mimetype,
+}) {
   const userExists = await db.user.findUnique({
     where: { id: userId },
   })
@@ -10,6 +16,7 @@ export async function create({ filename, userId, size, mimetype }) {
   return db.file.create({
     data: {
       filename,
+      originalName,
       userId,
       size,
       mimetype,

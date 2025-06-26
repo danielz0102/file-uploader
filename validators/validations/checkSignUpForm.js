@@ -24,7 +24,7 @@ export const checkSignUpForm = checkSchema(
         minSymbols: 1,
       },
     },
-    confirmPassword: {
+    ['confirm-password']: {
       trim: true,
       notEmpty: {
         errorMessage: 'Confirm Password is required',
