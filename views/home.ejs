@@ -10,9 +10,12 @@
     <main>
       <h1>
         Welcome
-        <%= locals.user?.username %>
+        <%= locals.user?.username || 'to File Uploader' %>
       </h1>
+
+      <% if (locals.user) { %>
       <a href="/files/<%= locals.user?.id %>">See files</a>
+      <% } %>
     </main>
   </body>
 </html>
