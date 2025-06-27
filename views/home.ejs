@@ -35,29 +35,7 @@
       <section>
         <h2>Files</h2>
 
-        <% if (!locals.files || locals.files.length === 0) { %>
-        <p>You don't have files yet.</p>
-        <% } %>
-
-        <% if (locals.files) { %>
-        <ul>
-          <% for (const file of files) { %>
-          <li class="file">
-            <a href="/file/<%= file.id %>"><%= file.name %></a>
-          </li>
-          <% } %>
-        </ul>
-        <% } %>
-
-        <% if (locals.folders) { %>
-        <ul>
-          <% for (const folder of folders) { %>
-          <li class="folder">
-            <a href="/folder/<%= folder.id %>"><%= folder.name %></a>
-          </li>
-          <% } %>
-        </ul>
-        <% } %>
+        <%- include('partials/fileList') %>
       </section>
       <% } %>
     </main>

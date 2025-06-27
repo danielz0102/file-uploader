@@ -32,23 +32,7 @@
         </form>
       </section>
 
-      <ul>
-        <% if (files.length === 0 && children.length === 0) { %>
-        <li>No files in this folder.</li>
-        <% } %>
-
-        <% for (const file of files) { %>
-        <li class="file">
-          <a href="/file/<%= file.id %>"><%= file.name %></a>
-        </li>
-        <% } %>
-
-        <% for (const child of children) { %>
-        <li class="folder">
-          <a href="/folder/<%= child.id %>"><%= child.name %></a>
-        </li>
-        <% } %>
-      </ul>
+      <%- include('partials/fileList', { folders: children }) %>
     </main>
   </body>
 </html>
