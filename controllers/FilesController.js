@@ -1,22 +1,37 @@
+import multer from 'multer'
 import { FileModel } from '#models/FileModel.js'
 
-export async function uploadFile(req, res) {
-  const { filename, originalname, size, mimetype } = req.file
-  const result = await FileModel.create({
-    filename,
-    originalName: originalname,
-    userId: req.user.id,
-    size,
-    mimetype,
-  })
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/')
+  },
+  filename: (req, file, cb) => {
+    const fileExtension = file.originalname.split('.').pop()
+    cb(null, `${crypto.randomUUID()}.${fileExtension}`)
+  },
+})
+const uploadFile = multer({ storage }).single('file')
 
-  if (!result) {
-    throw new Error('File was not created in the DB', req.file)
-  }
+export const upload = [
+  uploadFile,
+  async (req, res) => {
+    const { filename, originalname, size, mimetype } = req.file
+    const result = await FileModel.create({
+      filename,
+      originalName: originalname,
+      userId: req.user.id,
+      size,
+      mimetype,
+    })
 
-  res.redirect(201, '/')
-}
+    if (!result) {
+      throw new Error('File was not created in the DB', req.file)
+    }
+
+    res.redirect('/')
+  },
+]
 
 export const FilesController = {
-  uploadFile,
+  upload,
 }
