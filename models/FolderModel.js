@@ -51,10 +51,31 @@ async function deleteFolder(id) {
   return await db.folder.delete({ where: { id } })
 }
 
+async function addFile(
+  fileId,
+  { filename, originalName, userId, size, mimetype },
+) {
+  return await db.folder.update({
+    where: { id: fileId },
+    data: {
+      files: {
+        create: {
+          filename,
+          originalName,
+          userId,
+          size,
+          mimetype,
+        },
+      },
+    },
+  })
+}
+
 export const FolderModel = {
   create,
   get,
   getFolderNames,
   update,
   delete: deleteFolder,
+  addFile,
 }
