@@ -7,6 +7,13 @@ async function createParent(req, res) {
   res.redirect('/')
 }
 
+async function renderFolder(req, res) {
+  const { id } = req.params
+  const folder = await FolderModel.get(id)
+  res.render('folder', { folder })
+}
+
 export const FoldersController = {
   createParent,
+  renderFolder,
 }

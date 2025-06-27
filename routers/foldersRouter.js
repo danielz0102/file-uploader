@@ -11,3 +11,4 @@ foldersRouter.post(
   FolderValidator.validateCreateForm,
   FoldersController.createParent,
 )
+foldersRouter.get('/:id', FoldersController.renderFolder)

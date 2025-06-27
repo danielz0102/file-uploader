@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= folder.name %></title>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <main>
+      <h1><%= folder.name %></h1>
+      <ul>
+        <% if (folder.files.length === 0) { %>
+        <li>No files in this folder.</li>
+        <% } %>
+
+        <% for (const file of folder.files) { %>
+        <li>
+          <a href="/files/<%= file.id %>"><%= file.name %></a>
+        </li>
+        <% } %>
+      </ul>
+    </main>
+  </body>
+</html>
