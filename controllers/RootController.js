@@ -1,5 +1,13 @@
-function renderHome(req, res) {
-  res.render('home')
+import { FileModel } from '#models/FileModel.js'
+
+async function renderHome(req, res) {
+  const files = await FileModel.getFileItemsWithoutFolder(req.user.id)
+  const fileItems = files.map((file) => ({
+    id: file.id,
+    name: file.originalName,
+  }))
+
+  res.render('home', { files: fileItems })
 }
 
 function renderLogin(req, res) {

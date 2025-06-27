@@ -22,6 +22,17 @@
         </form>
       </section>
       <% } %>
+
+      <section>
+        <h2>Files</h2>
+        <% if (locals.files) { %>
+        <ul>
+          <% for (const file of files) { %>
+          <li><a href="/file/<%= file.id %>"><%= file.name %></a></li>
+          <% } %>
+        </ul>
+        <% } %>
+      </section>
     </main>
   </body>
 </html>

@@ -18,6 +18,17 @@ async function create({ filename, originalName, userId, size, mimetype }) {
   })
 }
 
+const getFileItemsWithoutFolder = async (userId) =>
+  await db.file.findMany({
+    where: { userId, folderId: null },
+    select: {
+      id: true,
+      originalName: true,
+    },
+    orderBy: { createdAt: 'desc' },
+  })
+
 export const FileModel = {
   create,
+  getFileItemsWithoutFolder,
 }
