@@ -20,3 +20,4 @@ foldersRouter.post(
   FolderValidator.validateCreateForm,
   FoldersController.addChild,
 )
+foldersRouter.post('/:id/delete', FoldersController.delete)

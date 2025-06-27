@@ -1,3 +1,4 @@
+import fs from 'node:fs/promises'
 import { db } from '#db'
 
 async function create({ name, userId, parentId }) {
@@ -48,7 +49,17 @@ async function update({ id, name, parentId }) {
 }
 
 async function deleteFolder(id) {
-  return await db.folder.delete({ where: { id } })
+  const filenames = await db.file.findMany({
+    where: { folderId: id },
+    select: { filename: true },
+  })
+
+  await db.file.deleteMany({ where: { folderId: id } })
+  await db.folder.delete({ where: { id } })
+
+  await Promise.all(
+    filenames.map(({ filename }) => fs.unlink(`uploads/${filename}`)),
+  )
 }
 
 async function addFile(

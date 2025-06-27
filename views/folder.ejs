@@ -32,6 +32,10 @@
         </form>
       </section>
 
+      <form action="/folder/<%= folder.id %>/delete" method="post">
+        <button>Delete folder</button>
+      </form>
+
       <%- include('partials/fileList', { folders: children }) %>
     </main>
   </body>

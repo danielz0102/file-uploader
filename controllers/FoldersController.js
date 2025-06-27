@@ -51,9 +51,18 @@ async function addChild(req, res) {
   res.redirect(`/folder/${id}`)
 }
 
+async function deleteFolder(req, res) {
+  const { id } = req.params
+
+  await FolderModel.delete(id)
+
+  res.redirect('/')
+}
+
 export const FoldersController = {
   createParent,
   renderFolder,
   addFile,
   addChild,
+  delete: deleteFolder,
 }
