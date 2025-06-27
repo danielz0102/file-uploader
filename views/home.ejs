@@ -21,10 +21,14 @@
           <button type="submit">Upload</button>
         </form>
       </section>
-      <% } %>
 
       <section>
         <h2>Files</h2>
+
+        <% if (!locals.files || locals.files.length === 0) { %>
+        <p>You don't have files yet.</p>
+        <% } %>
+
         <% if (locals.files) { %>
         <ul>
           <% for (const file of files) { %>
@@ -33,6 +37,7 @@
         </ul>
         <% } %>
       </section>
+      <% } %>
     </main>
   </body>
 </html>
