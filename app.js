@@ -9,6 +9,7 @@ import { PORT, COOKIE_SECRET, NODE_ENV } from '#config/config.js'
 import { rootRouter } from '#routers/rootRouter.js'
 import { usersRouter } from '#routers/usersRouter.js'
 import { filesRouter } from '#routers/filesRouter.js'
+import { foldersRouter } from '#routers/foldersRouter.js'
 
 import { handle404 } from '#middlewares/handle404.js'
 import { handleError } from '#middlewares/handleError.js'
@@ -40,6 +41,7 @@ app.use(setUsers)
 app.use('/', rootRouter)
 app.use('/', usersRouter)
 app.use('/file', filesRouter)
+app.use('/folder', foldersRouter)
 app.use(handle404)
 app.use(handleError)
 

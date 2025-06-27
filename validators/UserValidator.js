@@ -27,7 +27,7 @@ function checkAuth(req, res, next) {
     return next()
   }
 
-  return res.status(401).render('login', { errors: ['You must be logged in'] })
+  return res.render('login', { errors: ['You must be logged in'] })
 }
 
 export const UserValidator = {
