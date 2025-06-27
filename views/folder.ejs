@@ -33,13 +33,19 @@
       </section>
 
       <ul>
-        <% if (files.length === 0) { %>
+        <% if (files.length === 0 && children.length === 0) { %>
         <li>No files in this folder.</li>
         <% } %>
 
         <% for (const file of files) { %>
-        <li>
-          <a href="/files/<%= file.id %>"><%= file.name %></a>
+        <li class="file">
+          <a href="/file/<%= file.id %>"><%= file.name %></a>
+        </li>
+        <% } %>
+
+        <% for (const child of children) { %>
+        <li class="folder">
+          <a href="/folder/<%= child.id %>"><%= child.name %></a>
         </li>
         <% } %>
       </ul>
