@@ -10,7 +10,7 @@ function renderSignUp(req, res) {
   res.render('sign-up')
 }
 
-export default {
+export const RootController = {
   renderHome,
   renderLogin,
   renderSignUp,

@@ -18,6 +18,6 @@ async function create({ filename, originalName, userId, size, mimetype }) {
   })
 }
 
-export default {
+export const FileModel = {
   create,
 }

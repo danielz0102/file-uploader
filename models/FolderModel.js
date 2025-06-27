@@ -25,7 +25,7 @@ async function deleteFolder({ id }) {
   return await db.folder.delete({ where: { id } })
 }
 
-export default {
+export const FolderModel = {
   create,
   get,
   update,

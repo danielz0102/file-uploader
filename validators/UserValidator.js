@@ -30,7 +30,7 @@ function checkAuth(req, res, next) {
   return res.status(401).render('login', { errors: ['You must be logged in'] })
 }
 
-export default {
+export const UserValidator = {
   validateSignUp,
   checkAuth,
 }

@@ -1,4 +1,4 @@
-import UserModel from '#models/UserModel.js'
+import { UserModel } from '#models/UserModel.js'
 import passport from 'passport'
 
 async function signUp(req, res, next) {
@@ -51,7 +51,7 @@ function logout(req, res, next) {
   })
 }
 
-export default {
+export const UserController = {
   signUp,
   login,
   logout,

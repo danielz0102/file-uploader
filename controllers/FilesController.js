@@ -1,4 +1,4 @@
-import FileModel from '#models/FileModel.js'
+import { FileModel } from '#models/FileModel.js'
 
 export function renderFiles(req, res) {
   res.render('files')
@@ -21,7 +21,7 @@ export async function uploadFile(req, res) {
   res.redirect('/files')
 }
 
-export default {
+export const FilesController = {
   renderFiles,
   uploadFile,
 }

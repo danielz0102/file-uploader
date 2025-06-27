@@ -22,6 +22,6 @@ async function create({ username, password }) {
   }
 }
 
-export default {
+export const UserModel = {
   create,
 }
