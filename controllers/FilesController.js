@@ -1,9 +1,5 @@
 import { FileModel } from '#models/FileModel.js'
 
-export function renderFiles(req, res) {
-  res.render('files')
-}
-
 export async function uploadFile(req, res) {
   const { filename, originalname, size, mimetype } = req.file
   const result = await FileModel.create({
@@ -22,6 +18,5 @@ export async function uploadFile(req, res) {
 }
 
 export const FilesController = {
-  renderFiles,
   uploadFile,
 }
