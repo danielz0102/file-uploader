@@ -1,6 +1,10 @@
 import { FileModel } from '#models/FileModel.js'
 
 async function renderHome(req, res) {
+  if (!req.isAuthenticated()) {
+    return res.render('home')
+  }
+
   const files = await FileModel.getFileItemsWithoutFolder(req.user.id)
   const fileItems = files.map((file) => ({
     id: file.id,
