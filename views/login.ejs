@@ -10,15 +10,7 @@
     <main>
       <form action="/login" method="post">
         <h1>Log in</h1>
-
-        <% if (locals.errors) { %>
-        <ul>
-          <% locals.errors.forEach((error) => { %>
-          <li><%= error %></li>
-          <% }) %>
-        </ul>
-        <% } %>
-
+        <%- include('partials/errorList') %>
         <div class="form-field">
           <label for="username">Username</label>
           <input
