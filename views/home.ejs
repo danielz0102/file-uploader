@@ -32,9 +32,19 @@
         <% if (locals.files) { %>
         <ul>
           <% for (const file of files) { %>
-          <li><a href="/file/<%= file.id %>"><%= file.name %></a></li>
+          <li class="file">
+            <a href="/file/<%= file.id %>"><%= file.name %></a>
+          </li>
           <% } %>
         </ul>
+        <% } %>
+
+        <% if (locals.folders) { %>
+        <% for (const folder of folders) { %>
+        <li class="folder">
+          <a href="/folder/<%= folder.id %>"><%= folder.name %></a>
+        </li>
+        <% } %>
         <% } %>
       </section>
       <% } %>

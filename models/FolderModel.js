@@ -10,6 +10,16 @@ async function get(userId) {
   })
 }
 
+async function getFolderNames(userId) {
+  return await db.folder.findMany({
+    where: { userId },
+    select: {
+      id: true,
+      name: true,
+    },
+  })
+}
+
 async function update({ id, name, parentId }) {
   const exists = await db.folder.findUnique({ where: { id } })
 
@@ -28,6 +38,7 @@ async function deleteFolder(id) {
 export const FolderModel = {
   create,
   get,
+  getFolderNames,
   update,
   delete: deleteFolder,
 }
