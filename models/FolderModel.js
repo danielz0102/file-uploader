@@ -4,7 +4,7 @@ async function create({ name, userId, parentId }) {
   return await db.folder.create({ data: { name, userId, parentId } })
 }
 
-async function get({ userId }) {
+async function get(userId) {
   return await db.folder.findMany({
     where: { userId },
   })
@@ -21,7 +21,7 @@ async function update({ id, name, parentId }) {
   })
 }
 
-async function deleteFolder({ id }) {
+async function deleteFolder(id) {
   return await db.folder.delete({ where: { id } })
 }
 
