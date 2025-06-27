@@ -39,7 +39,7 @@ app.use(passport.session())
 app.use(setUsers)
 app.use('/', rootRouter)
 app.use('/', usersRouter)
-app.use('/files', filesRouter)
+app.use('/file', filesRouter)
 app.use(handle404)
 app.use(handleError)
 
