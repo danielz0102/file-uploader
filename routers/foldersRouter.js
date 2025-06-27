@@ -15,3 +15,8 @@ foldersRouter.post(
 )
 foldersRouter.get('/:id', FoldersController.renderFolder)
 foldersRouter.post('/:id/files', uploadFile, FoldersController.addFile)
+foldersRouter.post(
+  '/:id/folders',
+  FolderValidator.validateCreateForm,
+  FoldersController.addChild,
+)

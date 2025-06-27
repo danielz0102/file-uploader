@@ -42,8 +42,18 @@ async function addFile(req, res) {
   res.redirect(`/folder/${id}`)
 }
 
+async function addChild(req, res) {
+  const { id } = req.params
+  const { name } = req.body
+
+  await FolderModel.create({ name, userId: req.user.id, parentId: id })
+
+  res.redirect(`/folder/${id}`)
+}
+
 export const FoldersController = {
   createParent,
   renderFolder,
   addFile,
+  addChild,
 }
