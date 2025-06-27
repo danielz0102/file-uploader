@@ -6,9 +6,5 @@ import { UserValidator } from '#validators/UserValidator.js'
 
 export const filesRouter = Router()
 
-filesRouter.post(
-  '/',
-  UserValidator.checkAuth,
-  uploadFile,
-  FilesController.uploadFile,
-)
+filesRouter.use('/', UserValidator.checkAuth)
+filesRouter.post('/', uploadFile, FilesController.uploadFile)
