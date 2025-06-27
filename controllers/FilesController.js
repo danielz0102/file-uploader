@@ -18,7 +18,7 @@ export async function uploadFile(req, res) {
     throw new Error('File was not created in the DB', req.file)
   }
 
-  res.redirect('/files')
+  res.redirect(201, '/')
 }
 
 export const FilesController = {
