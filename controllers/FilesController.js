@@ -37,12 +37,13 @@ async function deleteFile(req, res) {
 }
 
 async function download(req, res) {
-  const file = await FileModel.getInfo(req.params.id)
+  const file = await FileModel.select(req.params.id, [
+    'filename',
+    'originalName',
+  ])
   const filePath = `./uploads/${file.filename}`
 
-  res.download(filePath, file.originalName, (err) =>
-    console.error('Error downloading file:', err),
-  )
+  res.download(filePath, file.originalName)
 }
 
 export const FilesController = {

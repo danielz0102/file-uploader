@@ -42,6 +42,12 @@ const getInfo = async (id) =>
     },
   })
 
+const select = async (id, fields) =>
+  await db.file.findUnique({
+    where: { id },
+    select: Object.fromEntries(fields.map((field) => [field, true])),
+  })
+
 async function deleteFile(id) {
   const filename = await db.file.findUnique({
     where: { id },
@@ -60,6 +66,7 @@ async function deleteFile(id) {
 export const FileModel = {
   create,
   getInfo,
+  select,
   getFileItemsWithoutFolder,
   delete: deleteFile,
 }
