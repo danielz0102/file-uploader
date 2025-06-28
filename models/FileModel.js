@@ -1,14 +1,22 @@
-import fs from 'node:fs/promises'
+import { FileStorage } from '../FileStorage.js'
 import { db } from '#db'
+import { generateFilePath } from './lib/generateFilePath.js'
 
-async function create({ filename, originalName, userId, size, mimetype }) {
+async function create({ userId, originalName, size, mimetype, buffer }) {
   const userExists = await db.user.findUnique({
     where: { id: userId },
   })
 
   if (!userExists) return false
 
-  return db.file.create({
+  const { filename, path } = generateFilePath({ userId, originalName })
+  const { error } = await FileStorage.uploadFile(path, buffer)
+
+  if (error) {
+    throw new Error('File upload failed', { cause: error })
+  }
+
+  const result = db.file.create({
     data: {
       filename,
       originalName,
@@ -17,6 +25,8 @@ async function create({ filename, originalName, userId, size, mimetype }) {
       mimetype,
     },
   })
+
+  return result
 }
 
 const getFileItemsWithoutFolder = async (userId) =>
@@ -49,18 +59,21 @@ const select = async (id, fields) =>
   })
 
 async function deleteFile(id) {
-  const filename = await db.file.findUnique({
+  const file = await db.file.findUnique({
     where: { id },
-    select: { filename: true },
+    select: { filename: true, userId: true },
   })
 
   await db.file.delete({
     where: { id },
   })
 
-  fs.unlink(`./uploads/${filename.filename}`).catch((err) => {
-    console.error('Error deleting file:', err)
-  })
+  const path = `${file.userId}/${file.filename}`
+  const { error } = await FileStorage.deleteFiles([path])
+
+  if (error) {
+    console.error('Error deleting file from storage:', error)
+  }
 }
 
 export const FileModel = {
