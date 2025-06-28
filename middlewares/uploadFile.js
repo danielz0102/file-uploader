@@ -11,3 +11,6 @@ const storage = multer.diskStorage({
 })
 
 export const uploadFile = multer({ storage }).single('file')
+export const getFile = multer({ storage: multer.memoryStorage() }).single(
+  'file',
+)

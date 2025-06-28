@@ -1,14 +1,26 @@
 import fs from 'node:fs/promises'
+import crypto from 'node:crypto'
+
+import { FileStorage } from '../FileStorage.js'
 import { db } from '#db'
 
-async function create({ filename, originalName, userId, size, mimetype }) {
+async function create({ userId, originalName, size, mimetype, buffer }) {
   const userExists = await db.user.findUnique({
     where: { id: userId },
   })
 
   if (!userExists) return false
 
-  return db.file.create({
+  const extension = originalName.split('.').pop()
+  const filename = `${crypto.randomUUID()}.${extension}`
+  const path = `${userId}/${filename}`
+  const { error } = await FileStorage.uploadFile(path, buffer)
+
+  if (error) {
+    throw new Error('File upload failed', { cause: error })
+  }
+
+  const result = db.file.create({
     data: {
       filename,
       originalName,
@@ -17,6 +29,8 @@ async function create({ filename, originalName, userId, size, mimetype }) {
       mimetype,
     },
   })
+
+  return result
 }
 
 const getFileItemsWithoutFolder = async (userId) =>

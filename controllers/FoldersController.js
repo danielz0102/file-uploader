@@ -29,14 +29,14 @@ async function renderFolder(req, res) {
 
 async function addFile(req, res) {
   const { id } = req.params
-  const { filename, originalname, size, mimetype } = req.file
+  const { originalname, size, mimetype, buffer } = req.file
 
-  await FolderModel.addFile(id, {
-    filename,
+  await FolderModel.addFile(id, req.user.id, {
     originalName: originalname,
     userId: req.user.id,
     size,
     mimetype,
+    buffer,
   })
 
   res.redirect(`/folder/${id}`)

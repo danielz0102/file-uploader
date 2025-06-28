@@ -1,19 +1,14 @@
 import { FileModel } from '#models/FileModel.js'
 
 async function upload(req, res) {
-  const { filename, originalname, size, mimetype } = req.file
-  const result = await FileModel.create({
-    filename,
-    originalName: originalname,
+  const { originalname, size, mimetype, buffer } = req.file
+  await FileModel.create({
     userId: req.user.id,
+    originalName: originalname,
     size,
     mimetype,
+    buffer,
   })
-
-  if (!result) {
-    throw new Error('File was not created in the DB', req.file)
-  }
-
   res.redirect('/')
 }
 
