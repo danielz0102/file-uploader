@@ -34,6 +34,7 @@ const getInfo = async (id) =>
     where: { id },
     select: {
       id: true,
+      filename: true,
       originalName: true,
       size: true,
       mimetype: true,

@@ -36,8 +36,18 @@ async function deleteFile(req, res) {
   res.redirect('/')
 }
 
+async function download(req, res) {
+  const file = await FileModel.getInfo(req.params.id)
+  const filePath = `./uploads/${file.filename}`
+
+  res.download(filePath, file.originalName, (err) =>
+    console.error('Error downloading file:', err),
+  )
+}
+
 export const FilesController = {
   upload,
   renderFile,
   delete: deleteFile,
+  download,
 }
