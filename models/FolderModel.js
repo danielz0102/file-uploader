@@ -1,5 +1,3 @@
-import fs from 'node:fs/promises'
-
 import { db } from '#db'
 import { FileStorage } from '../FileStorage.js'
 import { generateFilePath } from './lib/generateFilePath.js'
@@ -52,17 +50,20 @@ async function update({ id, name, parentId }) {
 }
 
 async function deleteFolder(id) {
-  const filenames = await db.file.findMany({
+  const files = await db.file.findMany({
     where: { folderId: id },
-    select: { filename: true },
+    select: { filename: true, userId: true },
   })
 
   await db.file.deleteMany({ where: { folderId: id } })
   await db.folder.delete({ where: { id } })
 
-  await Promise.all(
-    filenames.map(({ filename }) => fs.unlink(`uploads/${filename}`)),
-  )
+  const paths = files.map((file) => `${file.userId}/${file.filename}`)
+  const { error } = await FileStorage.deleteFiles(paths)
+
+  if (error) {
+    console.error('Error deleting files from storage:', error)
+  }
 }
 
 async function addFile(
