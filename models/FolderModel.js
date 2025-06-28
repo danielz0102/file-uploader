@@ -1,5 +1,5 @@
 import { db } from '#db'
-import { FileStorage } from '../FileStorage.js'
+import { FileStorage } from './lib/FileStorage.js'
 import { generateFilePath } from './lib/generateFilePath.js'
 
 async function create({ name, userId, parentId }) {

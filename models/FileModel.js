@@ -1,4 +1,4 @@
-import { FileStorage } from '../FileStorage.js'
+import { FileStorage } from './lib/FileStorage.js'
 import { db } from '#db'
 import { generateFilePath } from './lib/generateFilePath.js'
 
@@ -95,7 +95,7 @@ async function getDownloadData(id) {
   }
 
   return {
-    buffer: await data.arrayBuffer(),
+    buffer: Buffer.from(await data.arrayBuffer()),
     originalName: file.originalName,
     mimetype: file.mimetype,
   }
