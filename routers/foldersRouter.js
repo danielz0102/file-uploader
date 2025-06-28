@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { getFile } from '#middlewares/uploadFile.js'
+import { getFile } from '#middlewares/getFile.js'
 import { FoldersController } from '#controllers/FoldersController.js'
 import { UserValidator } from '#validators/UserValidator.js'
 import { FolderValidator } from '#validators/FolderValidator.js'

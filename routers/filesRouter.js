@@ -2,7 +2,7 @@ import { Router } from 'express'
 
 import { FilesController } from '#controllers/FilesController.js'
 import { UserValidator } from '#validators/UserValidator.js'
-import { getFile } from '#middlewares/uploadFile.js'
+import { getFile } from '#middlewares/getFile.js'
 
 export const filesRouter = Router()
 
