@@ -13,7 +13,7 @@
   "imports": {
     "#config/*": "./config/*",
     "#db": "./prisma/db.js",
-    "#middlewares/*": "./lib/middlewares/*",
+    "#middlewares/*": "./middlewares/*",
     "#controllers/*": "./controllers/*",
     "#routers/*": "./routers/*",
     "#models/*": "./models/*",
