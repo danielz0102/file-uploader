@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises'
-import crypto from 'node:crypto'
 
 import { FileStorage } from '../FileStorage.js'
 import { db } from '#db'
+import { generateFilePath } from './lib/generateFilePath.js'
 
 async function create({ userId, originalName, size, mimetype, buffer }) {
   const userExists = await db.user.findUnique({
@@ -11,9 +11,7 @@ async function create({ userId, originalName, size, mimetype, buffer }) {
 
   if (!userExists) return false
 
-  const extension = originalName.split('.').pop()
-  const filename = `${crypto.randomUUID()}.${extension}`
-  const path = `${userId}/${filename}`
+  const { filename, path } = generateFilePath({ userId, originalName })
   const { error } = await FileStorage.uploadFile(path, buffer)
 
   if (error) {
