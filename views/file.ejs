@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= file.name %></title>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <main>
+      <h1><%= file.name %></h1>
+
+      <section>
+        <p>
+          <strong>Upload time:</strong>
+          <%= file.uploadTime %>
+        </p>
+        <p>
+          <strong>Size:</strong>
+          <% 
+          const size = file.size / 1024;
+          if (size < 1024) { 
+          %>
+          <%= size.toFixed(2) %>
+          KB
+          <% } else { %>
+          <%= (size / 1024).toFixed(2) %>
+          MB
+          <% } %>
+        </p>
+        <p>
+          <strong>Type:</strong>
+          <%= file.type %>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

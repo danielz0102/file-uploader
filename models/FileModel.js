@@ -28,7 +28,20 @@ const getFileItemsWithoutFolder = async (userId) =>
     orderBy: { createdAt: 'desc' },
   })
 
+const getInfo = async (id) =>
+  await db.file.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      originalName: true,
+      size: true,
+      mimetype: true,
+      createdAt: true,
+    },
+  })
+
 export const FileModel = {
   create,
+  getInfo,
   getFileItemsWithoutFolder,
 }

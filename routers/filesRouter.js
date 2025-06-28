@@ -8,3 +8,4 @@ export const filesRouter = Router()
 
 filesRouter.use('/', UserValidator.checkAuth)
 filesRouter.post('/', uploadFile, FilesController.upload)
+filesRouter.get('/:id', FilesController.renderFile)

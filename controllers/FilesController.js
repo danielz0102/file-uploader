@@ -17,6 +17,21 @@ async function upload(req, res) {
   res.redirect('/')
 }
 
+async function renderFile(req, res) {
+  const file = await FileModel.getInfo(req.params.id)
+
+  res.render('file', {
+    file: {
+      id: file.id,
+      name: file.originalName,
+      size: Number(file.size),
+      uploadTime: file.createdAt.toLocaleString(),
+      type: file.mimetype,
+    },
+  })
+}
+
 export const FilesController = {
   upload,
+  renderFile,
 }
