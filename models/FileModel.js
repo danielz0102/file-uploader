@@ -76,10 +76,36 @@ async function deleteFile(id) {
   }
 }
 
+async function getDownloadData(id) {
+  const file = await db.file.findUnique({
+    where: { id },
+    select: {
+      filename: true,
+      originalName: true,
+      userId: true,
+      mimetype: true,
+    },
+  })
+
+  const filePath = `${file.userId}/${file.filename}`
+  const { data, error } = await FileStorage.downloadFile(filePath)
+
+  if (error) {
+    throw new Error('File download failed', { cause: error })
+  }
+
+  return {
+    buffer: await data.arrayBuffer(),
+    originalName: file.originalName,
+    mimetype: file.mimetype,
+  }
+}
+
 export const FileModel = {
   create,
   getInfo,
   select,
   getFileItemsWithoutFolder,
   delete: deleteFile,
+  getDownloadData,
 }

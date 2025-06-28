@@ -16,7 +16,16 @@ async function deleteFiles(paths) {
   return { data, error }
 }
 
+async function downloadFile(path) {
+  const { data, error } = await supabase.storage
+    .from(USER_FILES_BUCKET)
+    .download(path)
+
+  return { data, error }
+}
+
 export const FileStorage = {
   uploadFile,
   deleteFiles,
+  downloadFile,
 }
