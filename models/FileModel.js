@@ -1,3 +1,4 @@
+import fs from 'node:fs/promises'
 import { db } from '#db'
 
 async function create({ filename, originalName, userId, size, mimetype }) {
@@ -40,8 +41,24 @@ const getInfo = async (id) =>
     },
   })
 
+async function deleteFile(id) {
+  const filename = await db.file.findUnique({
+    where: { id },
+    select: { filename: true },
+  })
+
+  await db.file.delete({
+    where: { id },
+  })
+
+  fs.unlink(`./uploads/${filename.filename}`).catch((err) => {
+    console.error('Error deleting file:', err)
+  })
+}
+
 export const FileModel = {
   create,
   getInfo,
   getFileItemsWithoutFolder,
+  delete: deleteFile,
 }

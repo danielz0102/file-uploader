@@ -10,6 +10,10 @@
     <main>
       <h1><%= file.name %></h1>
 
+      <form action="/file/<%= file.id %>/delete" method="post">
+        <button>Delete</button>
+      </form>
+
       <section>
         <p>
           <strong>Upload time:</strong>

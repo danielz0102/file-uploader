@@ -31,7 +31,13 @@ async function renderFile(req, res) {
   })
 }
 
+async function deleteFile(req, res) {
+  await FileModel.delete(req.params.id)
+  res.redirect('/')
+}
+
 export const FilesController = {
   upload,
   renderFile,
+  delete: deleteFile,
 }
