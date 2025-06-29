@@ -66,12 +66,15 @@ async function deleteFolder(id) {
   }
 }
 
-async function addFile(
-  folderId,
-  userId,
-  { originalName, size, mimetype, buffer },
-) {
-  const { filename, path } = generateFilePath({ userId, originalName })
+async function addFile(folderId, { originalName, size, mimetype, buffer }) {
+  const folder = await db.folder.findUnique({
+    where: { id: folderId },
+    select: { userId: true },
+  })
+  const { filename, path } = generateFilePath({
+    userId: folder.userId,
+    originalName,
+  })
   const { error } = await FileStorage.uploadFile(path, buffer)
 
   if (error) {
@@ -85,7 +88,7 @@ async function addFile(
         create: {
           filename,
           originalName,
-          userId,
+          userId: folder.userId,
           size,
           mimetype,
         },

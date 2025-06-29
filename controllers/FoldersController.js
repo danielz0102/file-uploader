@@ -31,7 +31,7 @@ async function addFile(req, res) {
   const { id } = req.params
   const { originalname, size, mimetype, buffer } = req.file
 
-  await FolderModel.addFile(id, req.user.id, {
+  await FolderModel.addFile(id, {
     originalName: originalname,
     userId: req.user.id,
     size,
