@@ -2,15 +2,13 @@
 <html lang="en">
   <head>
     <%- include('partials/commonHeadTags') %>
+    <link rel="stylesheet" href="/styles/home.css" />
     <title>Home</title>
   </head>
   <body>
     <%- include('partials/navbar') %>
-    <main>
-      <h1>
-        Welcome
-        <%= locals.user?.username || 'to File Uploader' %>
-      </h1>
+    <main data-isLoggedIn="<%= locals.user ? 'true' : 'false' %>">
+      <h1 class="hero-title">File Uploader</h1>
 
       <% if (locals.user) { %>
       <section>
@@ -36,6 +34,9 @@
 
         <%- include('partials/fileList') %>
       </section>
+      <% } else { %>
+      <p class="text">Securely store and organize your files in the cloud.</p>
+      <a class="button" href="/sign-up">Sign up now</a>
       <% } %>
     </main>
   </body>

@@ -12,6 +12,63 @@
   font-style: italic;
 }
 
+:root {
+  /* color-scheme: light dark; */
+
+  --background: light-dark(#fff, #151515);
+  --foreground: light-dark(#000, #fff);
+  --foreground-light: light-dark(#545556, #b0b0b0);
+  --accent: #007bff;
+
+  --spacing: 8px;
+  --spacing-lg: calc(var(--spacing) * 2);
+  --spacing-sm: calc(var(--spacing) / 2);
+}
+
 body {
   font-family: 'Inter', system-ui;
+  background-color: var(--background);
+  color: var(--foreground);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+
+  & > main {
+    flex: 1;
+  }
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.text {
+  color: var(--foreground-light);
+  text-align: var(--align, initial);
+  max-width: var(--width, 65ch);
+}
+
+a.button {
+  text-decoration: none;
+  color: var(--foreground);
+}
+
+.button {
+  --foreground: #fff;
+  --background-hover: var(--background);
+  --foreground-hover: var(--accent);
+
+  background-color: var(--accent);
+  padding: var(--spacing) var(--spacing-lg);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--background-hover);
+    color: var(--foreground-hover);
+  }
 }
