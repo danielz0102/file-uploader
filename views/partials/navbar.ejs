@@ -1,13 +1,44 @@
+<% const size = 20 %>
+
 <header>
   <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
+    <ul class="navbar">
+      <li class="nav-item">
+        <a class="nav-link" href="/">
+          <%- include('../icons/home', { size }) %> Home
+        </a>
+      </li>
       <% if (!locals.user) { %>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/sign-up">Sign up</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">
+          <%- include('../icons/login', { size }) %> Login
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/sign-up">
+          <%- include('../icons/register', { size }) %> Sign up
+        </a>
+      </li>
       <% } else { %>
-      <li><a href="/logout">Logout</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">
+          <%- include('../icons/logout', { size }) %> Logout
+        </a>
+      </li>
       <% } %>
     </ul>
   </nav>
+
+  <script>
+    const currentPath = window.location.pathname
+    const navLinks = document.querySelectorAll('.nav-link')
+
+    const currentLink = Array.from(navLinks).find(
+      (link) => link.getAttribute('href') === currentPath,
+    )
+
+    if (currentLink) {
+      currentLink?.classList.add('current')
+    }
+  </script>
 </header>

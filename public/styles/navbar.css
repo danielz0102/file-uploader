@@ -1,0 +1,42 @@
+header:has(.navbar) {
+  padding: var(--spacing-xl);
+  display: flex;
+  justify-content: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing);
+
+  list-style: none;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 4px 16px;
+  border-radius: 999px;
+
+  outline: none;
+  transition-property: background-color, transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+
+  &:hover,
+  &:focus-visible,
+  &.current {
+    background-color: var(--accent);
+    color: #fff;
+  }
+
+  &.current:focus-visible {
+    transform: scale(1.05);
+  }
+}
