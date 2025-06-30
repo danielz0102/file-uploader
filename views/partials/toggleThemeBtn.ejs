@@ -1,0 +1,63 @@
+<style>
+  #toggleThemeBtn {
+    background: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    color: var(--accent);
+
+    outline: none;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      transform: scale(1.25);
+    }
+  }
+</style>
+
+<button id="toggleThemeBtn"></button>
+
+<script>
+  const toggleThemeBtn = document.querySelector('#toggleThemeBtn')
+  const root = document.querySelector(':root')
+  const lightIcon = `<%- include("../icons/moon") %>`
+  const darkIcon = `<%- include("../icons/sun") %>`
+
+  toggleThemeBtn.addEventListener('click', () => {
+    root.classList.toggle('dark')
+    localStorage.setItem(
+      'theme',
+      root.classList.contains('dark') ? 'dark' : 'light',
+    )
+    setToggleThemeBtn()
+  })
+
+  setPreferredTheme()
+  setToggleThemeBtn()
+
+  function setToggleThemeBtn() {
+    const isDarkMode = root.classList.contains('dark')
+
+    toggleThemeBtn.innerHTML = isDarkMode ? lightIcon : darkIcon
+    toggleThemeBtn.setAttribute(
+      'aria-label',
+      isDarkMode ? 'Switch to light mode' : 'Switch to dark mode',
+    )
+  }
+
+  function setPreferredTheme() {
+    const themeSaved = localStorage.getItem('theme')
+
+    if (themeSaved) {
+      root.classList.toggle('dark', themeSaved === 'dark')
+      return
+    }
+
+    const prefersDark = window.matchMedia(
+      '(prefers-color-scheme: dark)',
+    ).matches
+
+    root.classList.toggle('dark', prefersDark)
+  }
+</script>

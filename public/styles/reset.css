@@ -22,6 +22,10 @@ svg {
   max-width: 100%;
 }
 
+svg {
+  flex-shrink: 0;
+}
+
 input,
 button,
 textarea,

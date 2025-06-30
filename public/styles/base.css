@@ -13,17 +13,26 @@
 }
 
 :root {
-  /* color-scheme: light dark; */
+  color-scheme: light;
 
-  --background: light-dark(#fff, #151515);
-  --foreground: light-dark(#000, #fff);
-  --foreground-light: light-dark(#545556, #b0b0b0);
+  --background: #fff;
+  --foreground: #000;
+  --foreground-light: #545556;
   --accent: #007bff;
 
   --spacing-sm: calc(var(--spacing) / 2);
   --spacing: 8px;
   --spacing-lg: calc(var(--spacing) * 2);
   --spacing-xl: calc(var(--spacing) * 4);
+
+  &.dark {
+    color-scheme: dark;
+
+    --background: #151515;
+    --foreground: #fff;
+    --foreground-light: #b0b0b0;
+    --accent: #007bff;
+  }
 }
 
 body {

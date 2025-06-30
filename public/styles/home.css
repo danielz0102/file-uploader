@@ -9,7 +9,7 @@ main[data-isLoggedIn='false'] {
   justify-content: center;
 
   & > .button {
-    margin-top: var(--spacing);
+    margin-top: var(--spacing-lg);
   }
 
   & > .text {
