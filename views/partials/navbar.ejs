@@ -1,42 +1,25 @@
-<% const size = 20 %>
-
-<header>
-  <nav>
-    <ul class="navbar">
-      <li class="nav-item">
-        <a class="nav-link" href="/"> <%- include('../icons/home') %> Home </a>
-      </li>
-      <% if (!locals.user) { %>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">
-          <%- include('../icons/login') %> Login
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/sign-up">
-          <%- include('../icons/register') %> Sign up
-        </a>
-      </li>
-      <% } else { %>
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">
-          <%- include('../icons/logout') %> Logout
-        </a>
-      </li>
-      <% } %>
-      <li class="nav-item"><%- include('toggleThemeBtn') %></li>
-    </ul>
-  </nav>
-</header>
-
-<script>
-  const currentPath = window.location.pathname
-  const navLinks = document.querySelectorAll('.nav-link')
-  const currentLink = Array.from(navLinks).find(
-    (link) => link.getAttribute('href') === currentPath,
-  )
-
-  if (currentLink) {
-    currentLink?.classList.add('current')
-  }
-</script>
+<nav>
+  <ul class="navbar">
+    <li class="nav-item">
+      <a class="nav-link" href="/"> <%- include('../icons/home') %> Home </a>
+    </li>
+    <% if (!locals.user) { %>
+    <li class="nav-item">
+      <a class="nav-link" href="/login">
+        <%- include('../icons/login') %> Login
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/sign-up">
+        <%- include('../icons/register') %> Sign up
+      </a>
+    </li>
+    <% } else { %>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">
+        <%- include('../icons/logout') %> Logout
+      </a>
+    </li>
+    <% } %>
+  </ul>
+</nav>

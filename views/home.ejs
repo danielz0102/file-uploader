@@ -6,7 +6,8 @@
     <title>Home</title>
   </head>
   <body>
-    <%- include('partials/navbar') %>
+    <%- include('partials/header') %>
+
     <main data-isLoggedIn="<%= locals.user ? 'true' : 'false' %>">
       <h1 class="hero-title">File Uploader</h1>
 

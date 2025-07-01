@@ -109,3 +109,17 @@ a.button {
     transform: scale(1.05);
   }
 }
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+
+  outline: none;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.25);
+  }
+}

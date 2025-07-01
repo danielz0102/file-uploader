@@ -1,0 +1,22 @@
+<header id="header">
+  <%- include('navbar') %>
+
+  <button
+    class="icon-btn"
+    type="button"
+    id="openSidebarBtn"
+    aria-label="Open sidebar"
+  >
+    <%- include('../icons/menu') %>
+  </button>
+
+  <%- include('toggleThemeBtn') %>
+</header>
+
+<aside id="sidebar">
+  <%- include('navbar') %>
+
+  <button type="button" id="closeSidebarBtn" aria-label="Close sidebar">
+    <%- include('../icons/close') %>
+  </button>
+</aside>

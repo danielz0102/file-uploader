@@ -1,24 +1,6 @@
-<style>
-  #toggleThemeBtn {
-    background: none;
-    border: none;
-    width: 100%;
-    height: 100%;
-    color: var(--accent);
+<button class="icon-btn" id="toggleThemeBtn"></button>
 
-    outline: none;
-    transition: transform 0.2s ease-in-out;
-
-    &:hover,
-    &:focus-visible {
-      transform: scale(1.25);
-    }
-  }
-</style>
-
-<button id="toggleThemeBtn"></button>
-
-<script>
+<script type="module">
   const toggleThemeBtn = document.querySelector('#toggleThemeBtn')
   const root = document.querySelector(':root')
   const lightIcon = `<%- include("../icons/moon") %>`
