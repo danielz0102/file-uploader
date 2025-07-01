@@ -39,4 +39,9 @@ header:has(.navbar) {
   &.current:focus-visible {
     transform: scale(1.05);
   }
+
+  & > svg {
+    width: 20px;
+    height: 20px;
+  }
 }
