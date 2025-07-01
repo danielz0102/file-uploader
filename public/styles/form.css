@@ -51,6 +51,11 @@ input {
   }
 }
 
+label {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
 .feedback {
   display: block;
   font-size: 0.875rem;

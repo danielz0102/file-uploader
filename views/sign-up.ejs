@@ -25,7 +25,12 @@
         </div>
         <div class="form-group">
           <div class="form-field">
-            <label for="password">Password</label>
+            <label for="password">
+              Password <%- include('partials/info', { info: `Password must be at
+              least 8 characters long, contain at least one uppercase letter,
+              one lowercase letter, one number, and one special character.` })
+              %>
+            </label>
             <input
               type="password"
               id="password"
