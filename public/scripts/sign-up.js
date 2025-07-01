@@ -1,3 +1,5 @@
+import './form.js'
+
 const passwordInput = document.querySelector('#password')
 const confirmPasswordInput = document.querySelector('#confirm-password')
 
