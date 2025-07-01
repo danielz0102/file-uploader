@@ -5,6 +5,7 @@
     color: var(--foreground-light);
     border: none;
     background: transparent;
+    outline: none;
     cursor: initial;
     position: relative;
 
@@ -48,7 +49,7 @@
     }
   }
 
-  .info-btn:hover #info-tooltip {
+  .info-btn:is(:hover, :focus-visible) #info-tooltip {
     opacity: 1;
     visibility: visible;
   }
