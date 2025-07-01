@@ -3,12 +3,14 @@
   <head>
     <%- include('partials/commonHeadTags') %>
     <title><%= error %></title>
+    <link rel="stylesheet" href="/styles/error.css" />
   </head>
   <body>
-    <h1>
-      <%= error %>
-    </h1>
-    <p><%= message %></p>
-    <a href="/">Go back to home</a>
+    <%- include('partials/header') %>
+    <main>
+      <h1 class="hero-title"><%= error %></h1>
+      <p><%= message %></p>
+      <a class="link" href="/">Go back to home</a>
+    </main>
   </body>
 </html>

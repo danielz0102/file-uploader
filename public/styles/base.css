@@ -123,3 +123,12 @@ a.button {
     transform: scale(1.25);
   }
 }
+
+.link {
+  color: var(--accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
