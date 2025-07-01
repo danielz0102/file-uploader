@@ -10,9 +10,10 @@
     <%- include('partials/header') %>
 
     <main>
+      <h1 class="hero-title">Welcome back</h1>
+      <%- include('partials/errorList') %>
+
       <form action="/login" method="post">
-        <h1 class="hero-title">Welcome back</h1>
-        <%- include('partials/errorList') %>
         <div class="form-group">
           <div class="form-field">
             <label for="username">Username</label>
