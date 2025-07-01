@@ -12,6 +12,10 @@ header:has(.navbar) {
   list-style: none;
 }
 
+.nav-item {
+  flex-shrink: 0;
+}
+
 .nav-link {
   display: flex;
   align-items: center;
