@@ -12,7 +12,6 @@ toggleThemeBtn.addEventListener('click', () => {
   setToggleThemeBtn()
 })
 
-setPreferredTheme()
 setToggleThemeBtn()
 
 function setToggleThemeBtn() {
@@ -24,17 +23,4 @@ function setToggleThemeBtn() {
     'aria-label',
     isDarkMode ? 'Switch to light mode' : 'Switch to dark mode',
   )
-}
-
-function setPreferredTheme() {
-  const themeSaved = localStorage.getItem('theme')
-
-  if (themeSaved) {
-    root.classList.toggle('dark', themeSaved === 'dark')
-    return
-  }
-
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-
-  root.classList.toggle('dark', prefersDark)
 }

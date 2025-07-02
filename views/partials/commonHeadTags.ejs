@@ -1,5 +1,21 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>
+  ;(() => {
+    const themeSaved = localStorage.getItem('theme')
+
+    if (themeSaved) {
+      document.documentElement.classList.toggle('dark', themeSaved === 'dark')
+      return
+    }
+
+    const prefersDark = window.matchMedia(
+      '(prefers-color-scheme: dark)',
+    ).matches
+
+    document.documentElement.classList.toggle('dark', prefersDark)
+  })()
+</script>
 <link rel="stylesheet" href="/styles/reset.css" />
 <link rel="stylesheet" href="/styles/base.css" />
 <link rel="stylesheet" href="/styles/header.css" />
