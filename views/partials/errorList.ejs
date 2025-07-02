@@ -1,29 +1,3 @@
-<style>
-  .error-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-  }
-
-  .error-item {
-    background-color: var(--danger-light);
-    color: var(--danger);
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-
-    & > svg {
-      width: 20px;
-      height: 20px;
-    }
-  }
-</style>
-
 <% if (locals.errors) { %>
 <ul class="error-list">
   <% for (const error of errors) { %>

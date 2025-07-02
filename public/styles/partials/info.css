@@ -1,0 +1,54 @@
+.info-btn {
+  display: flex;
+  align-items: center;
+  color: var(--foreground-light);
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: initial;
+  position: relative;
+
+  & > svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+#info-tooltip {
+  background-color: var(--background-light);
+  color: var(--foreground-light);
+  border: 1px solid var(--foreground-light);
+  border-radius: 16px;
+  padding: 8px;
+  font-size: 0.85rem;
+  margin-bottom: var(--spacing);
+  min-width: 200px;
+
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  opacity: 0;
+  visibility: hidden;
+  transition-property: opacity, visibility;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--foreground-light) transparent transparent transparent;
+  }
+}
+
+.info-btn:is(:hover, :focus-visible) #info-tooltip {
+  opacity: 1;
+  visibility: visible;
+}

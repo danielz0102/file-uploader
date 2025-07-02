@@ -1,3 +1,6 @@
+@import url('partials/errorList.css');
+@import url('partials/info.css');
+
 main {
   display: flex;
   flex-direction: column;

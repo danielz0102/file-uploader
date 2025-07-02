@@ -10,7 +10,10 @@
     <%- include('../icons/menu') %>
   </button>
 
-  <%- include('toggleThemeBtn') %>
+  <button class="icon-btn" id="toggleThemeBtn">
+    <%- include('../icons/sun', { id: 'sunIcon' }) %> <%-
+    include('../icons/moon', { id: 'moonIcon' }) %>
+  </button>
 </header>
 
 <aside id="sidebar">

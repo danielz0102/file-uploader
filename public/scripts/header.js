@@ -1,3 +1,5 @@
+import './partials/toggleThemeBtn.js'
+
 setCurrentLink()
 setupSidebar()
 
