@@ -3,8 +3,8 @@
   <head>
     <%- include('partials/commonHeadTags') %>
     <title>Login</title>
-    <link rel="stylesheet" href="/styles/form.css" />
-    <script type="module" src="/scripts/form.js"></script>
+    <link rel="stylesheet" href="/styles/login.css" />
+    <script type="module" src="/scripts/partials/form.js"></script>
   </head>
   <body>
     <%- include('partials/header') %>
@@ -13,7 +13,7 @@
       <h1 class="hero-title">Welcome back</h1>
       <%- include('partials/errorList') %>
 
-      <form action="/login" method="post">
+      <form class="form" action="/login" method="post" novalidate>
         <div class="form-group">
           <div class="form-field">
             <label for="username">Username</label>

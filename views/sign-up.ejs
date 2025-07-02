@@ -3,7 +3,7 @@
   <head>
     <%- include('partials/commonHeadTags') %>
     <title>Sign Up</title>
-    <link rel="stylesheet" href="/styles/form.css" />
+    <link rel="stylesheet" href="/styles/sign-up.css" />
     <script type="module" src="/scripts/sign-up.js"></script>
   </head>
   <body>
@@ -12,7 +12,13 @@
     <main>
       <h1 class="hero-title">Create your account</h1>
       <%- include('partials/errorList') %>
-      <form action="sign-up" method="post" id="sign-up-form" novalidate>
+      <form
+        class="form"
+        action="sign-up"
+        method="post"
+        id="sign-up-form"
+        novalidate
+      >
         <div class="form-field">
           <label for="username">Username</label>
           <input

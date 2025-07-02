@@ -1,5 +1,5 @@
-const form = document.querySelector('form')
-const inputs = form.querySelectorAll('input')
+const form = document.querySelector('.form')
+const inputs = form.querySelectorAll('.form-field > input')
 
 inputs.forEach((input) => {
   const errorSpan = document.querySelector(`#${input.id} + span`)

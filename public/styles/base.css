@@ -132,3 +132,7 @@ a.button {
     text-decoration: underline;
   }
 }
+
+.subtitle {
+  color: var(--foreground-light);
+}

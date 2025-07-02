@@ -1,4 +1,4 @@
-import './form.js'
+import './partials/form.js'
 
 const passwordInput = document.querySelector('#password')
 const confirmPasswordInput = document.querySelector('#confirm-password')
