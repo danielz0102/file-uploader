@@ -1,14 +1,18 @@
 const form = document.querySelector('.form')
 const inputs = form.querySelectorAll('.form-field > input')
+let timeout
 
 inputs.forEach((input) => {
   const errorSpan = document.querySelector(`#${input.id} + span`)
 
-  input.addEventListener('blur', () => {
-    input.classList.toggle('input-invalid', !input.validity.valid)
-    errorSpan.textContent = input.validity.valid
-      ? ''
-      : `* ${input.validationMessage}`
+  input.addEventListener('input', () => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      input.classList.toggle('input-invalid', !input.validity.valid)
+      errorSpan.textContent = input.validity.valid
+        ? ''
+        : `* ${input.validationMessage}`
+    }, 500)
   })
 
   input.addEventListener('invalid', () => {
