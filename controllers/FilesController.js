@@ -2,14 +2,15 @@ import { FileModel } from '#models/FileModel.js'
 
 async function upload(req, res) {
   const { originalname, size, mimetype, buffer } = req.file
-  await FileModel.create({
+  const file = await FileModel.create({
     userId: req.user.id,
     originalName: originalname,
     size,
     mimetype,
     buffer,
   })
-  res.redirect('/')
+
+  res.redirect(`/file/${file.id}`)
 }
 
 async function renderFile(req, res) {
