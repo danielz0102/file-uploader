@@ -45,10 +45,14 @@ main[data-isLoggedIn='true'] {
   border-radius: 8px;
   color: var(--foreground-light);
   outline: none;
+  font-size: small;
+  padding: var(--spacing-xl);
 
   display: flex;
+  flex-direction: column;
+  align-items: center;
   align-self: center;
-  padding: var(--spacing-xl);
+  gap: var(--spacing-sm);
 
   transition: transform 0.2s ease-in-out;
 

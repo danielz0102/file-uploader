@@ -14,7 +14,7 @@
 
       <% if (locals.user) { %>
       <div class="actions">
-        <button class="button button--secondary">
+        <button class="button button--secondary" id="uploadDialogButton">
           <%- include('icons/upload') %> Upload a new file
         </button>
         <button class="button button--secondary" id="newFolderDialogButton">
@@ -57,6 +57,36 @@
         </div>
       </dialog>
 
+      <dialog class="dialog" id="uploadDialog">
+        <div class="dialog-content">
+          <h2 class="title">Upload a new file</h2>
+          <button type="button" class="file-button">
+            <%- include('icons/upload') %> Select a file
+          </button>
+          <form
+            id="upload-form"
+            class="form"
+            action="/file"
+            method="post"
+            enctype="multipart/form-data"
+            novalidate
+          >
+            <div class="form-field">
+              <input type="file" id="file" name="file" required hidden />
+              <span class="feedback"></span>
+            </div>
+            <button class="button">Upload</button>
+          </form>
+          <button
+            type="button"
+            class="close-btn"
+            aria-label="Close dialog"
+            id="closeUploadDialogButton"
+          >
+            <%- include('icons/close') %>
+          </button>
+        </div>
+      </dialog>
       <% } else { %>
       <p class="text">Securely store and organize your files in the cloud.</p>
       <a class="button" href="/sign-up">
