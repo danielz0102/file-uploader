@@ -40,8 +40,6 @@
     --foreground: #fff;
     --foreground-light: #b0b0b0;
 
-    --accent: #007bff;
-
     --danger-light: #eea3a9;
   }
 }
@@ -66,6 +64,14 @@ body {
   text-align: center;
 }
 
+.title {
+  font-size: 2rem;
+}
+
+.subtitle {
+  color: var(--foreground-light);
+}
+
 .text {
   color: var(--foreground-light);
   text-align: var(--align, initial);
@@ -79,7 +85,7 @@ a.button {
 
 .button {
   --foreground: #fff;
-  --background-hover: var(--background);
+  --background-hover: transparent;
   --foreground-hover: var(--accent);
   --shadow: var(--background-light);
 
@@ -127,12 +133,10 @@ a.button {
 .link {
   color: var(--accent);
   text-decoration: none;
+  display: flex;
+  gap: var(--spacing-sm);
 
   &:hover {
     text-decoration: underline;
   }
-}
-
-.subtitle {
-  color: var(--foreground-light);
 }

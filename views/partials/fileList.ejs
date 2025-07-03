@@ -1,17 +1,21 @@
-<ul>
+<ul class="file-list">
   <% if (files.length === 0 && folders.lenth === 0) { %>
   <li>No files or folders found.</li>
   <% } %>
 
   <% for (const file of files) { %>
   <li class="file">
-    <a href="/file/<%= file.id %>"><%= file.name %></a>
+    <a href="/file/<%= file.id %>">
+      <%- include('../icons/file') %> <%= file.name %>
+    </a>
   </li>
   <% } %>
 
   <% for (const folder of folders) { %>
   <li class="folder">
-    <a href="/folder/<%= folder.id %>"><%= folder.name %></a>
+    <a href="/folder/<%= folder.id %>">
+      <%- include('../icons/folder') %> <%= folder.name %>
+    </a>
   </li>
   <% } %>
 </ul>
