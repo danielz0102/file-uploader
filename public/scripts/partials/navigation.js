@@ -1,4 +1,4 @@
-import './partials/toggleThemeBtn.js'
+import './toggleThemeBtn.js'
 
 setCurrentLink()
 setupSidebar()

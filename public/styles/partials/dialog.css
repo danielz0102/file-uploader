@@ -1,3 +1,5 @@
+@import url('closeBtn.css');
+
 .dialog {
   position: absolute;
   top: 50%;
@@ -16,22 +18,5 @@
 
   & > h2 {
     text-align: center;
-  }
-}
-
-.close-sidebar-btn {
-  position: absolute;
-  top: var(--spacing);
-  right: var(--spacing);
-
-  background: none;
-  border: none;
-  outline: none;
-
-  transition: transform 0.2s ease-in-out;
-
-  &:hover,
-  &:focus-visible {
-    transform: rotate(90deg);
   }
 }

@@ -7,7 +7,7 @@
     <script type="module" src="/scripts/home.js"></script>
   </head>
   <body>
-    <%- include('partials/header') %>
+    <%- include('partials/navigation') %>
 
     <main data-isLoggedIn="<%= locals.user ? 'true' : 'false' %>">
       <h1 class="hero-title"><%= locals.user ? 'Files' : 'File Uploader' %></h1>
@@ -42,8 +42,8 @@
           </form>
           <button
             type="button"
-            class="close-sidebar-btn"
-            aria-label="Close sidebar"
+            class="close-btn"
+            aria-label="Close dialog"
             id="closeNewFolderDialogButton"
           >
             <%- include('icons/close') %>
