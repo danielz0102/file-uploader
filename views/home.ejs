@@ -26,7 +26,13 @@
       <dialog id="newFolderDialog" class="dialog">
         <div class="dialog-content">
           <h2 class="title">Add a new folder</h2>
-          <form class="form" action="/folder" method="post" novalidate>
+          <form
+            id="new-folder-form"
+            class="form"
+            action="/folder"
+            method="post"
+            novalidate
+          >
             <div class="form-field">
               <label for="name">Folder name</label>
               <input
