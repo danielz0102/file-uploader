@@ -1,0 +1,37 @@
+.dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--background-light);
+  border: 1px solid var(--foreground-light);
+  border-radius: 8px;
+  padding: var(--spacing-lg) var(--spacing-xl);
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+
+  & > h2 {
+    text-align: center;
+  }
+}
+
+.close-sidebar-btn {
+  position: absolute;
+  top: var(--spacing);
+  right: var(--spacing);
+
+  background: none;
+  border: none;
+  outline: none;
+
+  transition: transform 0.2s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    transform: rotate(90deg);
+  }
+}

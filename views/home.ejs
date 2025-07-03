@@ -13,61 +13,43 @@
       <h1 class="hero-title"><%= locals.user ? 'Files' : 'File Uploader' %></h1>
 
       <% if (locals.user) { %>
+      <div class="actions">
+        <button class="button button--secondary">
+          <%- include('icons/upload') %> Upload a new file
+        </button>
+        <button class="button button--secondary" id="newFolderDialogButton">
+          <%- include('icons/add') %> Add a new folder
+        </button>
+      </div>
       <%- include('partials/fileList') %>
 
-      <div class="section-group">
-        <section>
-          <h2 class="subtitle">Submit a file</h2>
-          <%- include('partials/errorList', { errors: locals.fileErrors }) %>
-          <button class="file-button">
-            <img
-              width="512"
-              height="512"
-              src="/assets/file.webp"
-              alt="Select a file"
-            />
-          </button>
-          <form
-            id="fileForm"
-            action="/file"
-            method="post"
-            enctype="multipart/form-data"
-            hidden
-          >
-            <input type="file" name="file" required />
-          </form>
-          <button type="submit" form="fileForm" class="button">
-            <%- include('icons/upload') %> Upload
-          </button>
-        </section>
-
-        <section>
-          <h2 class="subtitle">Create a folder</h2>
-          <%- include('partials/errorList', { errors: locals.folderErrors }) %>
-          <form
-            id="folderForm"
-            class="form"
-            action="/folder"
-            method="post"
-            novalidate
-          >
+      <dialog id="newFolderDialog" class="dialog">
+        <div class="dialog-content">
+          <h2 class="title">Add a new folder</h2>
+          <form class="form" action="/folder" method="post" novalidate>
             <div class="form-field">
               <label for="name">Folder name</label>
               <input
-                id="name"
                 type="text"
+                id="name"
                 name="name"
-                placeholder="Enter a name for your folder"
                 required
+                placeholder="My New Folder"
               />
               <span class="feedback"></span>
             </div>
+            <button class="button">Create</button>
           </form>
-          <button form="folderForm" type="submit" class="button">
-            <%- include('icons/upload') %> Create
+          <button
+            type="button"
+            class="close-sidebar-btn"
+            aria-label="Close sidebar"
+            id="closeNewFolderDialogButton"
+          >
+            <%- include('icons/close') %>
           </button>
-        </section>
-      </div>
+        </div>
+      </dialog>
 
       <% } else { %>
       <p class="text">Securely store and organize your files in the cloud.</p>
