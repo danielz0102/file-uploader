@@ -19,8 +19,12 @@
   }
 }
 
+:is(.folder, .file) svg {
+  stroke: light-dark(var(--foreground), var(--background-light));
+}
+
 .folder svg {
-  fill: #ffd900;
+  fill: var(--folder);
 }
 
 .file svg {

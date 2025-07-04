@@ -13,6 +13,16 @@ main {
 
 .hero-title {
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+
+  & > svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--foreground-light);
+    stroke: light-dark(var(--foreground), var(--background-light));
+  }
 }
 
 .actions {

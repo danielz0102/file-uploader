@@ -9,7 +9,9 @@
   <body>
     <%- include('partials/navigation') %>
     <main>
-      <h1><%= folder.name %></h1>
+      <h1 class="hero-title">
+        <%- include('icons/folder') %> <%= folder.name %>
+      </h1>
       <%- include('partials/actions', { delete: true }) %>
       <%- include('partials/fileList', { folders: children }) %>
     </main>

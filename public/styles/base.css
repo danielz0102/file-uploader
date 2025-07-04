@@ -29,6 +29,8 @@
   --danger: #dc3545;
   --danger-light: #f8d7da;
 
+  --folder: #ffd900;
+
   --spacing-sm: calc(var(--spacing) / 2);
   --spacing: 8px;
   --spacing-lg: calc(var(--spacing) * 2);

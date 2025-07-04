@@ -10,3 +10,16 @@ main {
   align-items: center;
   gap: var(--spacing-lg);
 }
+
+.hero-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+
+  & > svg {
+    width: 48px;
+    height: 48px;
+    fill: var(--folder);
+    stroke: light-dark(var(--foreground), var(--background-light));
+  }
+}
