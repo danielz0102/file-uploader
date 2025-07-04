@@ -1,0 +1,30 @@
+<dialog class="dialog" id="uploadDialog">
+  <div class="dialog-content">
+    <h2 class="title">Upload a new file</h2>
+    <button type="button" class="file-button">
+      <%- include('../icons/upload') %> <span>Select a file</span>
+    </button>
+    <form
+      id="upload-form"
+      class="form"
+      action="<%= locals.isInParent ? `/folder/${folder.id}/files` : '/file' %>"
+      method="post"
+      enctype="multipart/form-data"
+      novalidate
+    >
+      <div class="form-field">
+        <input type="file" id="file" name="file" required hidden />
+        <span class="feedback"></span>
+      </div>
+      <button class="button">Upload</button>
+    </form>
+    <button
+      type="button"
+      class="close-btn"
+      aria-label="Close dialog"
+      id="closeUploadDialogButton"
+    >
+      <%- include('../icons/close') %>
+    </button>
+  </div>
+</dialog>

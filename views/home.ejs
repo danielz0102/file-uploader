@@ -4,7 +4,10 @@
     <%- include('partials/commonHeadTags') %>
     <title><%= locals.user ? 'Files' : 'File Uploader' %></title>
     <link rel="stylesheet" href="/styles/home.css" />
+
+    <% if (locals.user) { %>
     <script type="module" src="/scripts/home.js"></script>
+    <% } %>
   </head>
   <body>
     <%- include('partials/navigation') %>
@@ -13,80 +16,10 @@
       <h1 class="hero-title"><%= locals.user ? 'Files' : 'File Uploader' %></h1>
 
       <% if (locals.user) { %>
-      <div class="actions">
-        <button class="button button--secondary" id="uploadDialogButton">
-          <%- include('icons/upload') %> Upload a new file
-        </button>
-        <button class="button button--secondary" id="newFolderDialogButton">
-          <%- include('icons/add') %> Add a new folder
-        </button>
-      </div>
+      <%- include('partials/actions', { delete: false }) %>
       <%- include('partials/fileList') %>
-
-      <dialog id="newFolderDialog" class="dialog">
-        <div class="dialog-content">
-          <h2 class="title">Add a new folder</h2>
-          <form
-            id="new-folder-form"
-            class="form"
-            action="/folder"
-            method="post"
-            novalidate
-          >
-            <div class="form-field">
-              <label for="name">Folder name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                placeholder="My New Folder"
-              />
-              <span class="feedback"></span>
-            </div>
-            <button class="button">Create</button>
-          </form>
-          <button
-            type="button"
-            class="close-btn"
-            aria-label="Close dialog"
-            id="closeNewFolderDialogButton"
-          >
-            <%- include('icons/close') %>
-          </button>
-        </div>
-      </dialog>
-
-      <dialog class="dialog" id="uploadDialog">
-        <div class="dialog-content">
-          <h2 class="title">Upload a new file</h2>
-          <button type="button" class="file-button">
-            <%- include('icons/upload') %> <span>Select a file</span>
-          </button>
-          <form
-            id="upload-form"
-            class="form"
-            action="/file"
-            method="post"
-            enctype="multipart/form-data"
-            novalidate
-          >
-            <div class="form-field">
-              <input type="file" id="file" name="file" required hidden />
-              <span class="feedback"></span>
-            </div>
-            <button class="button">Upload</button>
-          </form>
-          <button
-            type="button"
-            class="close-btn"
-            aria-label="Close dialog"
-            id="closeUploadDialogButton"
-          >
-            <%- include('icons/close') %>
-          </button>
-        </div>
-      </dialog>
+      <%- include('partials/new-folder-dialog', { isInParent: false }) %>
+      <%- include('partials/upload-file-dialog', { isInParent: false }) %>
       <% } else { %>
       <p class="text">Securely store and organize your files in the cloud.</p>
       <a class="button" href="/sign-up">

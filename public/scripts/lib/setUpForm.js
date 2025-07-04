@@ -1,4 +1,5 @@
-export function setUpForm(form, customValidator = null) {
+export function setUpForm(formSelector, customValidator = null) {
+  const form = document.querySelector(formSelector)
   const inputs = form.querySelectorAll('.form-field > input')
   let timeout
 

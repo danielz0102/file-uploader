@@ -1,0 +1,33 @@
+<dialog id="newFolderDialog" class="dialog">
+  <div class="dialog-content">
+    <h2 class="title">Add a new folder</h2>
+    <form
+      id="new-folder-form"
+      class="form"
+      action="<%= locals.isInParent ? `/folder/${folder.id}/folders` : '/folder' %>"
+      method="post"
+      novalidate
+    >
+      <div class="form-field">
+        <label for="name">Folder name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          placeholder="My New Folder"
+        />
+        <span class="feedback"></span>
+      </div>
+      <button class="button">Create</button>
+    </form>
+    <button
+      type="button"
+      class="close-btn"
+      aria-label="Close dialog"
+      id="closeNewFolderDialogButton"
+    >
+      <%- include('../icons/close') %>
+    </button>
+  </div>
+</dialog>

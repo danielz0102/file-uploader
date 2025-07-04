@@ -1,6 +1,3 @@
-import { setUpDialog } from './lib/dialog.js'
+import { setUpDialog } from './lib/setUpDialog.js'
 
-const deleteDialog = document.querySelector('#deleteDialog')
-const deleteDialogButton = document.querySelector('#deleteDialogButton')
-
-setUpDialog(deleteDialog, deleteDialogButton)
+setUpDialog('#deleteDialog', '#deleteDialogButton')

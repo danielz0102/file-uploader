@@ -1,8 +1,6 @@
-import { setUpForm } from './partials/form.js'
+import { setUpForm } from './lib/setUpForm.js'
 
-const form = document.querySelector('#sign-up-form')
-
-setUpForm(form, validatePasswords)
+setUpForm('#sign-up-form', validatePasswords)
 
 const passwordInput = document.querySelector('#password')
 const confirmPasswordInput = document.querySelector('#confirm-password')

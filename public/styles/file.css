@@ -26,11 +26,6 @@ main {
   }
 }
 
-.dialog form {
-  display: flex;
-  justify-content: center;
-}
-
 .file-details {
   display: flex;
   flex-direction: column;

@@ -10,16 +10,6 @@ async function createParent(req, res) {
 async function renderFolder(req, res) {
   const { id } = req.params
   const folder = await FolderModel.get(id)
-  console.log({
-    files: folder.files.map((file) => ({
-      id: file.id,
-      name: file.originalName,
-    })),
-    children: folder.children.map((child) => ({
-      id: child.id,
-      name: child.name,
-    })),
-  })
 
   res.render('folder', {
     folder: {

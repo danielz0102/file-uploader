@@ -52,23 +52,6 @@
         </p>
       </section>
     </main>
-
-    <dialog class="dialog" id="deleteDialog">
-      <div class="dialog-content">
-        <h2>Confirm deletion</h2>
-        <p>The file cannot be recovered</p>
-        <form action="/file/<%= file.id %>/delete" method="post">
-          <button class="button button--danger">Confirm</button>
-        </form>
-      </div>
-      <button
-        type="button"
-        class="close-btn"
-        aria-label="Close dialog"
-        id="closeDeleteDialogButton"
-      >
-        <%- include('icons/close') %>
-      </button>
-    </dialog>
+    <%- include('partials/delete-dialog', { isFolder: false }) %>
   </body>
 </html>

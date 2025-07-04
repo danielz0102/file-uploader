@@ -1,0 +1,28 @@
+<% 
+const formId = locals.isFolder ? "deleteFolderForm" : 'deleteFileForm'
+const action = locals.isFolder ? `/folder/${folder.id}/delete` : `/file/${file.id}/delete`
+const resource = locals.isFolder ? 'folder' : 'file'
+%>
+
+<dialog class="dialog" id="deleteDialog">
+  <form id="<%= formId %>" action="<%= action %>" method="post"></form>
+  <div class="dialog-content">
+    <h2>Confirm deletion</h2>
+    <p>The <%= resource %> cannot be recovered</p>
+    <button
+      id="deleteDialogButton"
+      form="<%= formId %>"
+      class="button button--danger"
+    >
+      Confirm
+    </button>
+  </div>
+  <button
+    type="button"
+    class="close-btn"
+    aria-label="Close dialog"
+    id="closeDeleteDialogButton"
+  >
+    <%- include('../icons/close') %>
+  </button>
+</dialog>

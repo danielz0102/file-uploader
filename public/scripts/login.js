@@ -1,5 +1,3 @@
-import { setUpForm } from './partials/form.js'
+import { setUpForm } from './lib/setUpForm.js'
 
-const form = document.querySelector('#login-form')
-
-setUpForm(form)
+setUpForm('#login-form')

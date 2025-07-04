@@ -1,0 +1,17 @@
+<div class="actions">
+  <button class="button button--secondary" id="uploadDialogButton">
+    <%- include('../icons/upload') %> Upload a new file
+  </button>
+  <button class="button button--secondary" id="newFolderDialogButton">
+    <%- include('../icons/add') %> Add a new folder
+  </button>
+  <% if (locals.delete) { %>
+  <button
+    id="deleteDialogButton"
+    aria-label="Delete"
+    class="icon-btn icon-btn--danger"
+  >
+    <%- include('../icons/trash') %>
+  </button>
+  <% } %>
+</div>
