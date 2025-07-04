@@ -6,4 +6,5 @@ main {
   align-items: center;
   justify-content: center;
   gap: var(--spacing-lg);
+  padding-inline: var(--spacing-lg);
 }

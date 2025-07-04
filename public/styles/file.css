@@ -8,6 +8,11 @@ main {
   align-items: center;
   align-self: center;
   gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+}
+
+.hero-title {
+  font-size: 1.5rem;
 }
 
 .actions {
@@ -29,6 +34,10 @@ main {
 .file-details {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: var(--spacing-sm);
+
+  & > p {
+    max-width: 40ch;
+    text-align: center;
+  }
 }
