@@ -38,7 +38,7 @@ a.button {
   min-width: 150px;
   background-color: var(--btn-bg);
   padding: var(--spacing) var(--spacing-lg);
-  border: 1px solid var(--accent);
+  border: 1px solid var(--btn-bg);
   border-radius: 8px;
   outline: none;
   transition:
@@ -56,6 +56,11 @@ a.button {
   }
 }
 
+.button--danger {
+  --btn-bg: var(--danger);
+  --btn-fg-hover: var(--danger);
+}
+
 .button--secondary {
   --btn-bg: transparent;
   --btn-fg: var(--accent);
@@ -64,9 +69,11 @@ a.button {
 }
 
 .icon-btn {
+  --btn-color: var(--accent);
+
   background: none;
   border: none;
-  color: var(--accent);
+  color: var(--btn-color);
 
   outline: none;
   transition: transform 0.2s ease-in-out;
@@ -75,6 +82,10 @@ a.button {
   &:focus-visible {
     transform: scale(1.5);
   }
+}
+
+.icon-btn--danger {
+  --btn-color: var(--danger);
 }
 
 .link {

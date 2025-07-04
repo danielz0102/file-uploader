@@ -3,21 +3,34 @@
   <head>
     <%- include('partials/commonHeadTags') %>
     <title><%= file.name %></title>
+    <link rel="stylesheet" href="/styles/file.css" />
+    <script type="module" src="/scripts/file.js"></script>
   </head>
   <body>
     <%- include('partials/navigation') %>
     <main>
-      <h1><%= file.name %></h1>
+      <h1 class="hero-title"><%= file.name %></h1>
 
-      <form action="/file/<%= file.id %>/delete" method="post">
-        <button>Delete</button>
-      </form>
+      <div class="actions">
+        <button
+          id="deleteDialogButton"
+          aria-label="Delete"
+          class="icon-btn icon-btn--danger"
+        >
+          <%- include('icons/trash') %>
+        </button>
+        <a
+          href="/file/<%= file.id %>/download"
+          aria-label="Download"
+          class="icon-btn"
+        >
+          <%- include('icons/download') %>
+        </a>
+      </div>
 
-      <a href="/file/<%= file.id %>/download">Download</a>
-
-      <section>
+      <section class="file-details">
         <p>
-          <strong>Upload time:</strong>
+          <strong>Uploaded on:</strong>
           <%= file.uploadTime %>
         </p>
         <p>
@@ -34,10 +47,28 @@
           <% } %>
         </p>
         <p>
-          <strong>Type:</strong>
+          <strong>MIME type:</strong>
           <%= file.type %>
         </p>
       </section>
     </main>
+
+    <dialog class="dialog" id="deleteDialog">
+      <div class="dialog-content">
+        <h2>Confirm deletion</h2>
+        <p>The file cannot be recovered</p>
+        <form action="/file/<%= file.id %>/delete" method="post">
+          <button class="button button--danger">Confirm</button>
+        </form>
+      </div>
+      <button
+        type="button"
+        class="close-btn"
+        aria-label="Close dialog"
+        id="closeDeleteDialogButton"
+      >
+        <%- include('icons/close') %>
+      </button>
+    </dialog>
   </body>
 </html>

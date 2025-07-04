@@ -21,7 +21,13 @@ async function renderFile(req, res) {
       id: file.id,
       name: file.originalName,
       size: Number(file.size),
-      uploadTime: file.createdAt.toLocaleString(),
+      uploadTime: file.createdAt.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+      }),
       type: file.mimetype,
     },
   })
