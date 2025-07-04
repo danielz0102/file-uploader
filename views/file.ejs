@@ -12,13 +12,6 @@
       <h1 class="hero-title"><%= file.name %></h1>
 
       <div class="actions">
-        <button
-          id="deleteDialogButton"
-          aria-label="Delete"
-          class="icon-btn icon-btn--danger"
-        >
-          <%- include('icons/trash') %>
-        </button>
         <a
           href="/file/<%= file.id %>/download"
           aria-label="Download"
@@ -26,6 +19,13 @@
         >
           <%- include('icons/download') %>
         </a>
+        <button
+          id="deleteDialogButton"
+          aria-label="Delete"
+          class="icon-btn icon-btn--danger"
+        >
+          <%- include('icons/trash') %>
+        </button>
       </div>
 
       <section class="file-details">

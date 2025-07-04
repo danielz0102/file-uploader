@@ -3,39 +3,119 @@
   <head>
     <%- include('partials/commonHeadTags') %>
     <title><%= folder.name %></title>
+    <link rel="stylesheet" href="/styles/folder.css" />
+    <script type="module" src="/scripts/folder.js"></script>
   </head>
   <body>
     <%- include('partials/navigation') %>
     <main>
       <h1><%= folder.name %></h1>
 
-      <section>
-        <h2>Submit a file</h2>
-        <%- include('partials/errorList', { errors: locals.fileErrors }) %>
-        <form
-          action="/folder/<%= folder.id %>/files"
-          method="post"
-          enctype="multipart/form-data"
+      <div class="actions">
+        <button class="button button--secondary" id="uploadDialogButton">
+          <%- include('icons/upload') %> Upload a new file
+        </button>
+        <button class="button button--secondary" id="newFolderDialogButton">
+          <%- include('icons/add') %> Add a new folder
+        </button>
+        <button
+          id="deleteDialogButton"
+          aria-label="Delete"
+          class="icon-btn icon-btn--danger"
         >
-          <input type="file" name="file" required />
-          <button type="submit">Upload</button>
-        </form>
-      </section>
-
-      <section>
-        <h2>Create a folder</h2>
-        <%- include('partials/errorList', { errors: locals.folderErrors }) %>
-        <form action="/folder/<%= folder.id %>/folders" method="post">
-          <input type="text" name="name" placeholder="Folder name" required />
-          <button type="submit">Create</button>
-        </form>
-      </section>
-
-      <form action="/folder/<%= folder.id %>/delete" method="post">
-        <button>Delete folder</button>
-      </form>
+          <%- include('icons/trash') %>
+        </button>
+      </div>
 
       <%- include('partials/fileList', { folders: children }) %>
     </main>
+
+    <dialog id="newFolderDialog" class="dialog">
+      <div class="dialog-content">
+        <h2 class="title">Add a new folder</h2>
+        <form
+          id="new-folder-form"
+          class="form"
+          action="/folder/<%= folder.id %>/folders"
+          method="post"
+          novalidate
+        >
+          <div class="form-field">
+            <label for="name">Folder name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="My New Folder"
+            />
+            <span class="feedback"></span>
+          </div>
+          <button class="button">Create</button>
+        </form>
+        <button
+          type="button"
+          class="close-btn"
+          aria-label="Close dialog"
+          id="closeNewFolderDialogButton"
+        >
+          <%- include('icons/close') %>
+        </button>
+      </div>
+    </dialog>
+
+    <dialog class="dialog" id="uploadDialog">
+      <div class="dialog-content">
+        <h2 class="title">Upload a new file</h2>
+        <button type="button" class="file-button">
+          <%- include('icons/upload') %> <span>Select a file</span>
+        </button>
+        <form
+          id="upload-form"
+          class="form"
+          action="/folder/<%= folder.id %>/files"
+          method="post"
+          enctype="multipart/form-data"
+          novalidate
+        >
+          <div class="form-field">
+            <input type="file" id="file" name="file" required hidden />
+            <span class="feedback"></span>
+          </div>
+          <button class="button">Upload</button>
+        </form>
+        <button
+          type="button"
+          class="close-btn"
+          aria-label="Close dialog"
+          id="closeUploadDialogButton"
+        >
+          <%- include('icons/close') %>
+        </button>
+      </div>
+    </dialog>
+
+    <dialog class="dialog" id="deleteDialog">
+      <form
+        id="deleteFolderForm"
+        action="/folder/<%= folder.id %>/delete"
+        method="post"
+      ></form>
+      <div class="dialog-content">
+        <h2>Confirm deletion</h2>
+        <p>The file cannot be recovered</p>
+        <button form="deleteFolderForm" class="button button--danger">
+          Confirm
+        </button>
+      </div>
+      <button
+        type="button"
+        class="close-btn"
+        aria-label="Close dialog"
+        id="closeDeleteDialogButton"
+      >
+        <%- include('icons/close') %>
+      </button>
+    </dialog>
   </body>
 </html>
