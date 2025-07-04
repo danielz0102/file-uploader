@@ -8,3 +8,13 @@ setUpDialog('#deleteDialog', '#deleteDialogButton')
 
 setUpForm('#new-folder-form')
 setUpForm('#upload-form')
+
+const deleteForm = document.querySelector('#deleteFolderForm')
+deleteForm.addEventListener('submit', () => {
+  const button = document.querySelector('.button[form="deleteFolderForm"]')
+  const loader = document.createElement('span')
+
+  loader.classList.add('spinner')
+  button.disabled = true
+  button.replaceChildren(loader)
+})

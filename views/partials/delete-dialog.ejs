@@ -9,13 +9,7 @@ const resource = locals.isFolder ? 'folder' : 'file'
   <div class="dialog-content">
     <h2>Confirm deletion</h2>
     <p>The <%= resource %> cannot be recovered</p>
-    <button
-      id="deleteDialogButton"
-      form="<%= formId %>"
-      class="button button--danger"
-    >
-      Confirm
-    </button>
+    <button form="<%= formId %>" class="button button--danger">Confirm</button>
   </div>
   <button
     type="button"

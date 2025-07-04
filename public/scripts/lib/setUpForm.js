@@ -30,7 +30,16 @@ export function setUpForm(formSelector, customValidator = null) {
     }
 
     if (form.checkValidity()) {
+      setLoadingState(form)
       form.submit()
     }
   })
+}
+
+export function setLoadingState(form) {
+  const button = form.querySelector('.button')
+  const loader = document.createElement('span')
+  loader.classList.add('spinner')
+  button.disabled = true
+  button.replaceChildren(loader)
 }
