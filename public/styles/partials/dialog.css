@@ -9,6 +9,20 @@
   border: 1px solid var(--foreground-light);
   border-radius: 8px;
   padding: var(--spacing-lg) var(--spacing-xl);
+  opacity: 0;
+
+  transition-property: opacity, display;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+  transition-behavior: allow-discrete;
+
+  &[open] {
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
 }
 
 .dialog-content {
