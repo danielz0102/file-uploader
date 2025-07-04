@@ -11,7 +11,7 @@ async function renderHome(req, res) {
     id: file.id,
     name: file.originalName,
   }))
-  const folders = await FolderModel.getFolderNames(req.user.id)
+  const folders = await FolderModel.getParentFoldersNames(req.user.id)
 
   res.render('home', { files: fileItems, folders })
 }

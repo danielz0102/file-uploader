@@ -28,9 +28,9 @@ async function get(id) {
   })
 }
 
-async function getFolderNames(userId) {
+async function getParentFoldersNames(userId) {
   return await db.folder.findMany({
-    where: { userId },
+    where: { userId, parentId: null },
     select: {
       id: true,
       name: true,
@@ -100,7 +100,7 @@ async function addFile(folderId, { originalName, size, mimetype, buffer }) {
 export const FolderModel = {
   create,
   get,
-  getFolderNames,
+  getParentFoldersNames,
   update,
   delete: deleteFolder,
   addFile,
