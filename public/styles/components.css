@@ -23,7 +23,7 @@ a.button {
 }
 
 .button {
-  --btn-fg: #fff;
+  --btn-fg: #000;
   --btn-bg: var(--accent);
   --btn-bg-hover: transparent;
   --btn-fg-hover: var(--accent);
